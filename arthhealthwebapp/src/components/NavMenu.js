@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Collapse, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Collapse, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import './NavMenu.css';
 
@@ -108,7 +108,7 @@ const NavMenu = () => {
               <NavLink tag={Link} to="/contact">Contact</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} className="appointmentbutton" to="/book-appointment">Book appointment</NavLink>
+              <Button tag={Link} className="appointmentbutton" to="/book-appointment">Book appointment</Button>
             </NavItem>
           </ul>
         </Collapse>
