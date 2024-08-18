@@ -1,0 +1,92 @@
+﻿/* ComplimentaryScreenings.css */
+
+#complimentary-screenings-container {
+    padding: 100px 20px 50px; /* Adds padding to the section */
+    background-color: #f4f4f4;
+    text-align: left;
+}
+
+/* Layout Styling */
+.complimentary-screenings-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.complimentary-screenings-image {
+    flex: 1 1 40%;
+    padding-right: 20px;
+}
+
+    .complimentary-screenings-image img {
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+.complimentary-screenings-text {
+    flex: 1 1 60%;
+    padding-left: 20px;
+}
+
+    .complimentary-screenings-text h2 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .complimentary-screenings-text p {
+        font-size: 1.2rem;
+        color: #666;
+        margin-bottom: 20px;
+    }
+
+    .complimentary-screenings-text ul {
+        margin-bottom: 20px;
+        padding-left: 20px;
+    }
+
+        .complimentary-screenings-text ul li {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            color: #333;
+        }
+.schedule-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333; /* Dark background color */
+    color: #fff; /* White text */
+    text-decoration: none; /* Removes underline */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+    .schedule-button:hover {
+        background-color: #fff; /* Light background on hover */
+        color: #333; /* Dark text on hover */
+        border: 1px solid #333; /* Border on hover */
+    }
+
+
+.disclaimer {
+    font-size: 0.9rem;
+    color: #999;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .complimentary-screenings-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .complimentary-screenings-image {
+        padding-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .complimentary-screenings-text {
+        padding-left: 0;
+    }
+}

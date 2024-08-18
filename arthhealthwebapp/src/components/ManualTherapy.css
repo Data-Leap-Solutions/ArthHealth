@@ -1,0 +1,77 @@
+﻿/* Container for the manual therapy component */
+#manual-therapy {
+    padding: 100px 20px 50px; /* Adds padding to the section */
+    background-color: #f9f9f9; /* Light background */
+}
+
+/* Content wrapper to align the image and text */
+.manual-therapy-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Image styling */
+.manual-therapy-image img {
+    width: 100%;
+    max-width: 500px; /* Maximum width of the image */
+    border-radius: 10px; /* Rounded corners */
+}
+
+/* Text and button styling */
+.manual-therapy-text {
+    flex: 1;
+}
+
+    .manual-therapy-text h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .manual-therapy-text p {
+        margin-bottom: 20px;
+        line-height: 1.6;
+        color: #666; /* Grey text for readability */
+    }
+
+    /* List styling for manual therapy techniques */
+    .manual-therapy-text ul {
+        margin-bottom: 20px;
+        list-style-type: disc;
+        padding-left: 20px;
+    }
+
+        .manual-therapy-text ul li {
+            margin-bottom: 10px;
+        }
+
+/* Schedule button styling */
+.schedule-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333; /* Dark background color */
+    color: #fff; /* White text */
+    text-decoration: none; /* Removes underline */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+    .schedule-button:hover {
+        background-color: #fff; /* Light background on hover */
+        color: #333; /* Dark text on hover */
+        border: 1px solid #333; /* Border on hover */
+    }
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .manual-therapy-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .manual-therapy-image img {
+        max-width: 100%; /* Make the image responsive */
+        margin-bottom: 20px;
+    }
+}

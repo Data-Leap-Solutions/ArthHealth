@@ -1,0 +1,131 @@
+﻿/* Base HTML Styles */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px; /* Increased font size for larger screens */
+    }
+}
+
+/* Header Styles */
+header {
+    position: fixed; /* Fixes the header at the top of the viewport */
+    top: 0; /* Aligns the header at the top */
+    left: 0; /* Aligns the header to the left */
+    right: 0; /* Aligns the header to the right */
+    z-index: 1000; /* Ensures the header stays on top of other content */
+    background-color: #f4f4f4; /* Optional: Change to match your design */
+    width: 100%; /* Ensures the header spans the full width of the viewport */
+}
+
+/* Navbar Styles */
+.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+.libre-baskerville-bold {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); /* Light shadow for depth */
+}
+
+.navbar-nav {
+    justify-content: flex-start; /* Aligns items to the left */
+    margin-right: auto;
+}
+
+.nav-item {
+    margin-right: 15px; /* Space between navigation items */
+}
+
+.navbar-collapse {
+    flex-grow: 0; /* Limits expansion of navbar to avoid taking unnecessary space */
+}
+
+/* Specific button styling, targeting only the appointment button */
+.navbar-nav .nav-item .appointmentbutton,
+.navbar-nav .nav-item .appointmentbutton:hover {
+    border: 2px solid black; /* Distinct border */
+    background-color: transparent;
+    color: black;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    text-align: center;
+    display: inline-block;
+    transition: background-color 0.3s, color 0.3s; /* Transitions for background and text color */
+    text-decoration: none !important; /* Prevents any text underline */
+}
+
+.navbar-nav .nav-item .appointmentbutton:hover {
+    background-color: black; /* Black background on hover */
+    color: white; /* White text on hover */
+    border: 2px solid black; /* Changes border to white on hover for contrast */
+}
+
+.nav-link, .dropdown-toggle {
+    position: relative;
+    transition: color 0.3s ease; /* Smooth transition for text color */
+}
+
+.nav-link::after, .dropdown-toggle::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 100%; /* Start with the pseudo-element fully to the right */
+    bottom: 0;
+    border-bottom: 2px solid black; /* Underline effect */
+    transition: right 0.3s ease-out;
+}
+
+.nav-link:hover, .dropdown-toggle:hover {
+    text-decoration: none;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+}
+
+.nav-link:hover::after, .dropdown-toggle:hover::after {
+    right: 0; /* Expand to full width on hover */
+}
+
+/* Dropdown Item Styles */
+.dropdown-item {
+    position: relative; /* Necessary for absolute positioning of pseudo-element */
+    transition: color 0.3s ease; /* Smooth transition for text color on hover */
+}
+
+.dropdown-item::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 100%; /* Starts completely to the right */
+    bottom: -2px; /* Position slightly below the text */
+    border-bottom: 2px solid black; /* Solid black underline */
+    transition: right 0.3s ease-out; /* Smooth transition for the underline effect */
+}
+
+.dropdown-item:hover {
+    color: #555; /* Optional: change text color on hover */
+}
+
+.dropdown-item:hover::after {
+    right: 0; /* Expands the underline to full width on hover */
+}
+
+.dropdown-item:focus, .dropdown-item:hover {
+    background-color: transparent; /* Removes the default blue background */
+    color: #333; /* Sets a custom color for the text on focus/hover */
+}
+
+.dropdown-item:focus {
+    outline: none; /* Only remove outlines if replacing with another focus style */
+    background-color: #f8f8f8; /* Subtle background change */
+    box-shadow: inset 0 0 0 2px #555; /* Subtle shadow or border-like effect */
+}

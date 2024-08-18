@@ -1,0 +1,91 @@
+/* PatientInformation.css */
+
+#patient-information-container {
+    padding: 100px 20px 50px; /* Adds padding to the section */
+    background-color: #f4f4f4;
+    text-align: left;
+}
+
+/* Layout Styling */
+.patient-information-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.patient-information-image {
+    flex: 1 1 40%;
+    padding-right: 20px;
+}
+
+    .patient-information-image img {
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+.patient-information-text {
+    flex: 1 1 60%;
+    padding-left: 20px;
+}
+
+    .patient-information-text h2 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .patient-information-text p {
+        font-size: 1.2rem;
+        color: #666;
+        margin-bottom: 20px;
+    }
+
+    .patient-information-text ul {
+        margin-bottom: 20px;
+        padding-left: 20px;
+    }
+
+        .patient-information-text ul li {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+.view-forms-button,
+.schedule-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 1.2rem;
+    margin-right: 10px;
+}
+
+    .view-forms-button:hover,
+    .schedule-button:hover {
+        background-color: #fff;
+        color: #333;
+        border: 1px solid #333;
+    }
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .patient-information-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .patient-information-image {
+        padding-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .patient-information-text {
+        padding-left: 0;
+    }
+}
