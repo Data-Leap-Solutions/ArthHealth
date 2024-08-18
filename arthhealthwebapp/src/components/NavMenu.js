@@ -57,8 +57,8 @@ const NavMenu = () => {
               inNavbar 
               isOpen={dropdownOpen.Services} 
               onMouseOver={() => handleMouseOver('Services')} 
-              onMouseLeave={() => handleMouseLeave('Services')} 
-              toggle={() => toggleDropdown('Services')}
+              onMouseLeave={() => handleMouseLeave('Services')}
+              toggle={() => {}}  // <- Empty toggle function
             >
               <DropdownToggle nav caret={false} className={activeSection === 'Services' ? 'underline' : ''}>
                 Services
@@ -81,6 +81,7 @@ const NavMenu = () => {
               isOpen={dropdownOpen.Patients} 
               onMouseOver={() => handleMouseOver('Patients')} 
               onMouseLeave={() => handleMouseLeave('Patients')}
+              toggle={() => {}}  // <- Empty toggle function
             >
               <DropdownToggle nav caret={false} className={activeSection === 'Patients' ? 'underline' : ''}>
                 Patients
@@ -96,6 +97,7 @@ const NavMenu = () => {
               isOpen={dropdownOpen.About} 
               onMouseOver={() => handleMouseOver('About')} 
               onMouseLeave={() => handleMouseLeave('About')}
+              toggle={() => {}}  // <- Empty toggle function
             >
               <DropdownToggle nav caret={false} className={activeSection === 'About' ? 'underline' : ''}>
                 About
