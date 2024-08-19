@@ -4,12 +4,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ##To Run first
 ```bash
-npm install reactstrap bootstrap
+npm install
 ```
-##To Run second
-```bash
-npm install react-router-dom@latest
-```
+
+## Available Sc
+
 ## Available Scripts
 
 In the project directory, you can run:
