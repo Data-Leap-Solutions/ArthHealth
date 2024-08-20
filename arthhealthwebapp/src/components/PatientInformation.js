@@ -2,7 +2,7 @@ import React from 'react';
 import './PatientInformation.css';
 
 const handleViewFormsClick = () => {
-    window.open('Patient-Forms.pdf', 'noopener noreferrer');
+    window.open('/Patient-Forms.pdf', '_blank', 'noopener noreferrer');
 };
 
 const PatientInformation = () => {
