@@ -14,13 +14,6 @@ const NavMenu = () => {
 
   const toggleNavbar = () => setCollapsed(!collapsed);
 
-  const toggleDropdown = (name) => {
-    setDropdownOpen(prevState => ({
-      ...prevState,
-      [name]: !prevState[name]
-    }));
-  };
-
   const handleDropdownItemClick = (sectionName) => {
     setActiveSection(sectionName);
     setDropdownOpen(prevState => ({

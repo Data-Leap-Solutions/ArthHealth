@@ -7,13 +7,6 @@ import Contact from './Contact';
 
 const Home = () => {
     const [showButton, setShowButton] = useState(false);
-    const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        message: ''
-    });
-
     useEffect(() => {
         const timer = setTimeout(() => {
             setShowButton(true);
