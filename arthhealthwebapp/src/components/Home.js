@@ -22,16 +22,6 @@ const Home = () => {
         return () => clearTimeout(timer);
     }, []);
 
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Handle form submission
-        console.log('Form submitted:', formData);
-    };
-
     const services = [
         { name: "Physical Therapy", imageUrl: "https://tse1.mm.bing.net/th?id=OIP.4UJeLyl0HmMx_0bdV_8wLQHaEK&pid=Api&P=0&h=220", description: "Comprehensive physical therapy to restore function.", url: "/services/physical-therapy" },
         { name: "Balance & Gait Rehabilitation", imageUrl: "https://tse1.mm.bing.net/th?id=OIP.4UJeLyl0HmMx_0bdV_8wLQHaEK&pid=Api&P=0&h=220", description: "Comprehensive physical therapy to restore function.", url: "/services/balance-and-gait-rehabilitation" },
