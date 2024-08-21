@@ -34,6 +34,10 @@ const Contact = () => {
                         and we will connect with you soon. Eagerly looking forward to
                         your message!
                     </p>
+                    <div className="contact-details">
+                        <p><strong>Phone:</strong> (123) 456-7890</p>
+                        <p><strong>Fax:</strong> (123) 456-7891</p>
+                    </div>
                 </div>
                 <form className="contact-form" onSubmit={handleSubmit}>
                     <div className="form-group">

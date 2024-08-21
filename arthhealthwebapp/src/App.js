@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import AppRoutes from './AppRoutes';
 import Layout from './components/Layout';
 import ScrollToTop from './components/ScrollToTop';
+import Footer from './components/Footer';
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
             return <Route key={index} path={path} index={isIndex} element={element} />;
           })}
         </Routes>
+        <Footer />
       </Layout>
     </Router>
   );
