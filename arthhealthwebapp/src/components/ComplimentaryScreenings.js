@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import './ComplimentaryScreenings.css';
 import { Link } from 'react-router-dom';
 

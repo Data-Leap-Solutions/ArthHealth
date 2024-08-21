@@ -40,7 +40,7 @@ const Home = () => {
         { name: "Sports Rehabilitation", imageUrl: "https://tse1.mm.bing.net/th?id=OIP.4UJeLyl0HmMx_0bdV_8wLQHaEK&pid=Api&P=0&h=220", description: "Comprehensive physical therapy to restore function.", url: "/services/sports-rehabilitation" },
         { name: "TMJ Rehabilitation", imageUrl: "https://tse1.mm.bing.net/th?id=OIP.4UJeLyl0HmMx_0bdV_8wLQHaEK&pid=Api&P=0&h=220", description: "Comprehensive physical therapy to restore function.", url: "/services/tmj-rehabilitation" },
         { name: "Vestibular Rehabilitation", imageUrl: "https://tse1.mm.bing.net/th?id=OIP.4UJeLyl0HmMx_0bdV_8wLQHaEK&pid=Api&P=0&h=220", description: "Comprehensive physical therapy to restore function.", url: "/services/vestibular-rehabilitation" },
-        { name: "Virtual Physical Therapy", imageUrl: "https://tse1.mm.bing.net/th?id=OIP.4UJeLyl0HmMx_0bdV_8wLQHaEK&pid=Api&P=0&h=220", description: "Comprehensive physical therapy to restore function.", url: "/services/virtual-physical-therapy" },
+        //{ name: "Virtual Physical Therapy", imageUrl: "https://tse1.mm.bing.net/th?id=OIP.4UJeLyl0HmMx_0bdV_8wLQHaEK&pid=Api&P=0&h=220", description: "Comprehensive physical therapy to restore function.", url: "/services/virtual-physical-therapy" },
         { name: "Complimentary Screenings", imageUrl: "https://tse1.mm.bing.net/th?id=OIP.4UJeLyl0HmMx_0bdV_8wLQHaEK&pid=Api&P=0&h=220", description: "Comprehensive physical therapy to restore function.", url: "/services/complimentary-screening" }
     ];
 
