@@ -1,10 +1,6 @@
 import React from 'react';
 import './PatientInformation.css';
 
-const handleViewFormsClick = () => {
-    window.open('/Patient-Forms.pdf', '_blank', 'noopener noreferrer');
-};
-
 const PatientInformation = () => {
     return (
         <div id="patient-information-container" className="container">
@@ -23,7 +19,8 @@ const PatientInformation = () => {
                         <li>Wear loose-fitting, comfortable clothing.</li>
                         <li>We do our best to accommodate your schedule. Saturday appointments are available now.</li>
                     </ul>
-                    <a href="#" onClick={handleViewFormsClick} className="view-forms-button">View Patient Forms</a>
+                    <a href="/Patient-Forms.pdf" target="_blank" rel="noopener noreferrer" className="view-forms-button">View Patient Forms</a>
+
                     <a href="/book-appointment" className="schedule-button">Schedule an Appointment</a>
                 </div>
             </div>
