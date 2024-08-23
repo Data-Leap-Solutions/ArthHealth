@@ -4,6 +4,19 @@
     font-style: normal;
 }
 
+.landingpagetitle h1 {
+    overflow: hidden; /* Ensures the content does not spill out */
+    white-space: nowrap; /* Keeps the text on a single line */
+    margin: 0 auto; /* Centers the text */
+    letter-spacing: .15em; /* Adjust letter spacing */
+    border-right: none; /* Removes the simulated cursor */
+}
+
+/* Remove animation properties */
+.landingpagetitle h1 {
+    /* No animation applied anymore */
+}
+
 /* Banner Styles */
 #banner {
     height: 90vh; /* Maintains full viewport height */
@@ -12,7 +25,7 @@
     flex-direction: column; /* Stacks children vertically */
     justify-content: center; /* Centers content vertically */
     align-items: center; /* Centers content horizontally */
-    background-color: #333; /* Dark background color */
+    background-color: #222; /* Dark background color */
     color: white;
     text-align: center; /* Ensures text is centered */
     padding: 0; /* Remove padding for full viewport utilization */
@@ -27,39 +40,31 @@
     }
 }
 
-.landingpagetitle h1 {
-    overflow: hidden; /* Ensures the content does not spill out */
-    border-right: .15em solid white; /* Simulates the cursor */
-    white-space: nowrap; /* Keeps the text on a single line */
-    margin: 0 auto; /* Centers the text */
-    letter-spacing: .15em; /* Adjust letter spacing */
-    animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+/* Additional spacing around the button */
+.landingpagelinks {
+    margin-top: 20px; /* Adds space between the title and the button */
 }
 
-@keyframes typing {
-    from {
-        width: 0
-    }
-
-    to {
-        width: 100%
-    }
+.landingpagelinks a {
+    font-size: 1.25rem;
+    padding: 10px 20px;
+    border-radius: 20px;
+    opacity: 1;
+    visibility: visible;
+    border: 2px solid white; /* Distinct border */
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    display: inline-block;
+    transition: background-color 0.3s, color 0.3s; /* Transitions for background and text color */
+    text-decoration: none !important; /* Prevents any text underline */
 }
 
-@keyframes blink-caret {
-    from, to {
-        border-color: transparent
-    }
-
-    50% {
-        border-color: white
-    }
+.landingpagelinks a:hover {
+    background-color: white;
+    color: #333;
 }
-
-.landingpagetitle h1 {
-    animation: typing 3.5s steps(40, end) forwards, blink-caret .75s steps(end) 3.5s; /* Stops blinking after 3.5 seconds */
-}
-
 /* Responsive adjustments for mobile view */
 @media (max-width: 768px) {
     #banner {
@@ -75,41 +80,6 @@
         padding: 8px 16px; /* Smaller padding for buttons on smaller screens */
     }
 }
-
-/* Additional spacing around the button */
-.landingpagelinks {
-    margin-top: 20px; /* Adds space between the title and the button */
-}
-
-    .landingpagelinks a {
-        font-size: 1.25rem;
-        padding: 10px 20px;
-        border-radius: 20px;
-        transition: opacity 2s, visibility 0s 3.5s; /* Delay visibility to match the end of the typing animation */
-        opacity: 0;
-        visibility: hidden;
-    }
-
-        .landingpagelinks a.show {
-            opacity: 1;
-            visibility: visible;
-            transition: opacity 2s 3.5s, visibility 0s 3.5s; /* Delay the start of the opacity transition */
-        }
-
-    /* Button Styling Ensures Visibility and No Overflow */
-    .appointmentbutton, .landingpagelinks a {
-        border: 2px solid white; /* Distinct border */
-        background-color: transparent;
-        color: white;
-        padding: 8px 20px;
-        border-radius: 20px;
-        font-weight: bold;
-        text-align: center;
-        display: inline-block;
-        transition: background-color 0.3s, color 0.3s; /* Transitions for background and text color */
-        text-decoration: none !important; /* Prevents any text underline */
-    }
-
 /* Services.css */
 #services {
     padding-top: 50px;

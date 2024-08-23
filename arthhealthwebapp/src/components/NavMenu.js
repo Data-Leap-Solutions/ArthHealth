@@ -1,109 +1,223 @@
-import React, { useState } from 'react';
-import { Collapse, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Button } from 'reactstrap';
-import { Link } from 'react-router-dom';
-import './NavMenu.css';
+import React, { useState, useCallback } from "react";
+import {
+  Collapse,
+  Navbar,
+  NavbarBrand,
+  NavbarToggler,
+  NavItem,
+  NavLink,
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  Button,
+} from "reactstrap";
+import { Link } from "react-router-dom";
+import "./NavMenu.css";
+import logo from "./../assets/ahcLogo.png";
 
 const NavMenu = () => {
   const [collapsed, setCollapsed] = useState(true);
   const [dropdownOpen, setDropdownOpen] = useState({
     Services: false,
     Patients: false,
-    About: false
+    About: false,
   });
-  const [activeSection, setActiveSection] = useState('');
+  const [activeSection, setActiveSection] = useState("");
 
-  const toggleNavbar = () => setCollapsed(!collapsed);
+  const toggleNavbar = useCallback(() => setCollapsed(!collapsed), [collapsed]);
 
-  const handleDropdownItemClick = (sectionName) => {
+  const handleDropdownItemClick = useCallback((sectionName) => {
     setActiveSection(sectionName);
-    setDropdownOpen(prevState => ({
+    setDropdownOpen((prevState) => ({
       ...prevState,
-      [sectionName]: false
+      [sectionName]: false,
     }));
-  };
+    setCollapsed(true); // Close navbar after selection
+  }, []);
 
-  const handleMouseOver = (name) => {
-    setDropdownOpen(prevState => ({
+  const handleMouseOver = useCallback((name) => {
+    setDropdownOpen((prevState) => ({
       ...prevState,
-      [name]: true
+      [name]: true,
     }));
     setActiveSection(name);
-  };
+  }, []);
 
-  const handleMouseLeave = (name) => {
-    setDropdownOpen(prevState => ({
+  const handleMouseLeave = useCallback((name) => {
+    setDropdownOpen((prevState) => ({
       ...prevState,
-      [name]: false
+      [name]: false,
     }));
-    setActiveSection('');
-  };
+    setActiveSection("");
+  }, []);
 
   return (
     <header>
-      <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow" container light>
-        <NavbarBrand tag={Link} to="/"><h3 className="libre-baskerville-bold">Arth Physical Therapy</h3></NavbarBrand>
-        <NavbarToggler onClick={toggleNavbar} className="mr-2" />
-        <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!collapsed} navbar>
+      <Navbar
+        className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow"
+        container
+        light
+      >
+        <NavbarBrand tag={Link} to="/">
+          <img src={logo} alt="Arth Health Club Logo" className="navbar-logo" />
+          <h3 className="libre-baskerville-bold">Arth Health Club</h3>
+        </NavbarBrand>
+        <NavbarToggler
+          onClick={toggleNavbar}
+          className={`mr-2 ${!collapsed ? "open" : ""}`}
+        >
+          <div className="toggler-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </NavbarToggler>
+        <Collapse
+          className="d-sm-inline-flex flex-sm-row-reverse"
+          isOpen={!collapsed}
+          navbar
+        >
           <ul className="navbar-nav flex-grow">
-            <Dropdown 
-              nav 
-              inNavbar 
-              isOpen={dropdownOpen.Services} 
-              onMouseOver={() => handleMouseOver('Services')} 
-              onMouseLeave={() => handleMouseLeave('Services')}
-              toggle={() => {}}  // <- Empty toggle function
-            >
-              <DropdownToggle nav caret={false} className={activeSection === 'Services' ? 'underline' : ''}>
-                Services
-              </DropdownToggle>
-              <DropdownMenu>
-                <DropdownItem tag={Link} to="/services/physical-therapy" onClick={() => handleDropdownItemClick('Services')}>Physical Therapy</DropdownItem>
-                <DropdownItem tag={Link} to="/services/balance-and-gait-rehabilitation" onClick={() => handleDropdownItemClick('Services')}>Balance and Gait Rehabilitation</DropdownItem>
-                <DropdownItem tag={Link} to="/services/workers-compensation" onClick={() => handleDropdownItemClick('Services')}>Workers Compensation</DropdownItem>
-                <DropdownItem tag={Link} to="/services/manual-therapy" onClick={() => handleDropdownItemClick('Services')}>Manual Therapy</DropdownItem>
-                <DropdownItem tag={Link} to="/services/sports-rehabilitation" onClick={() => handleDropdownItemClick('Services')}>Sports Rehabilitation</DropdownItem>
-                <DropdownItem tag={Link} to="/services/tmj-rehabilitation" onClick={() => handleDropdownItemClick('Services')}>TMJ Rehabilitation</DropdownItem>
-                <DropdownItem tag={Link} to="/services/vestibular-rehabilitation" onClick={() => handleDropdownItemClick('Services')}>Vestibular Rehabilitation</DropdownItem>
-                <DropdownItem tag={Link} to="/services/virtual-physical-therapy" onClick={() => handleDropdownItemClick('Services')}>Virtual Physical Therapy</DropdownItem>
-                <DropdownItem tag={Link} to="/services/complimentary-screening" onClick={() => handleDropdownItemClick('Services')}>Complimentary Screening</DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
-            <Dropdown 
-              nav 
-              inNavbar 
-              isOpen={dropdownOpen.Patients} 
-              onMouseOver={() => handleMouseOver('Patients')} 
-              onMouseLeave={() => handleMouseLeave('Patients')}
-              toggle={() => {}}  // <- Empty toggle function
-            >
-              <DropdownToggle nav caret={false} className={activeSection === 'Patients' ? 'underline' : ''}>
-                Patients
-              </DropdownToggle>
-              <DropdownMenu>
-                <DropdownItem tag={Link} to="/patients/patient-information" onClick={() => handleDropdownItemClick('Patients')}>Patient Information</DropdownItem>
-                <DropdownItem tag={Link} to="/patients/direct-access" onClick={() => handleDropdownItemClick('Patients')}>Direct Access</DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
-            <Dropdown 
-              nav 
-              inNavbar 
-              isOpen={dropdownOpen.About} 
-              onMouseOver={() => handleMouseOver('About')} 
-              onMouseLeave={() => handleMouseLeave('About')}
-              toggle={() => {}}  // <- Empty toggle function
-            >
-              <DropdownToggle nav caret={false} className={activeSection === 'About' ? 'underline' : ''}>
-                About
-              </DropdownToggle>
-              <DropdownMenu>
-                <DropdownItem tag={Link} to="/about/meet-our-team">Meet Our Team</DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
+            {/* Ensure the brand name is displayed above the first item in mobile view */}
+            <li className="nav-item mobile-brand-name d-block d-sm-none">
+              <h3 className="libre-baskerville-bold text-center">Arth Health Club</h3>
+            </li>
+            {["Services", "Patients", "About"].map((section) => (
+              <Dropdown
+                key={section}
+                nav
+                inNavbar
+                isOpen={dropdownOpen[section]}
+                onMouseOver={() => handleMouseOver(section)}
+                onMouseLeave={() => handleMouseLeave(section)}
+                toggle={() => {}}
+              >
+                <DropdownToggle
+                  nav
+                  caret={false}
+                  className={activeSection === section ? "underline" : ""}
+                >
+                  {section}
+                </DropdownToggle>
+                <DropdownMenu>
+                  {section === "Services" && (
+                    <>
+                      <DropdownItem
+                        tag={Link}
+                        to="/services/physical-therapy"
+                        onClick={() => handleDropdownItemClick("Services")}
+                      >
+                        Physical Therapy
+                      </DropdownItem>
+                      <DropdownItem
+                        tag={Link}
+                        to="/services/balance-and-gait-rehabilitation"
+                        onClick={() => handleDropdownItemClick("Services")}
+                      >
+                        Balance and Gait Rehabilitation
+                      </DropdownItem>
+                      <DropdownItem
+                        tag={Link}
+                        to="/services/workers-compensation"
+                        onClick={() => handleDropdownItemClick("Services")}
+                      >
+                        Workers Compensation
+                      </DropdownItem>
+                      <DropdownItem
+                        tag={Link}
+                        to="/services/manual-therapy"
+                        onClick={() => handleDropdownItemClick("Services")}
+                      >
+                        Manual Therapy
+                      </DropdownItem>
+                      <DropdownItem
+                        tag={Link}
+                        to="/services/sports-rehabilitation"
+                        onClick={() => handleDropdownItemClick("Services")}
+                      >
+                        Sports Rehabilitation
+                      </DropdownItem>
+                      <DropdownItem
+                        tag={Link}
+                        to="/services/tmj-rehabilitation"
+                        onClick={() => handleDropdownItemClick("Services")}
+                      >
+                        TMJ Rehabilitation
+                      </DropdownItem>
+                      <DropdownItem
+                        tag={Link}
+                        to="/services/vestibular-rehabilitation"
+                        onClick={() => handleDropdownItemClick("Services")}
+                      >
+                        Vestibular Rehabilitation
+                      </DropdownItem>
+                      <DropdownItem
+                        tag={Link}
+                        to="/services/virtual-physical-therapy"
+                        onClick={() => handleDropdownItemClick("Services")}
+                      >
+                        Virtual Physical Therapy
+                      </DropdownItem>
+                      <DropdownItem
+                        tag={Link}
+                        to="/services/complimentary-screening"
+                        onClick={() => handleDropdownItemClick("Services")}
+                      >
+                        Complimentary Screening
+                      </DropdownItem>
+                    </>
+                  )}
+                  {section === "Patients" && (
+                    <>
+                      <DropdownItem
+                        tag={Link}
+                        to="/patients/patient-information"
+                        onClick={() => handleDropdownItemClick("Patients")}
+                      >
+                        Patient Information
+                      </DropdownItem>
+                      <DropdownItem
+                        tag={Link}
+                        to="/patients/direct-access"
+                        onClick={() => handleDropdownItemClick("Patients")}
+                      >
+                        Direct Access
+                      </DropdownItem>
+                    </>
+                  )}
+                  {section === "About" && (
+                    <>
+                      <DropdownItem
+                        tag={Link}
+                        to="/about/meet-our-team"
+                        onClick={() => handleDropdownItemClick("About")}
+                      >
+                        Meet Our Team
+                      </DropdownItem>
+                    </>
+                  )}
+                </DropdownMenu>
+              </Dropdown>
+            ))}
             <NavItem>
-              <NavLink tag={Link} to="/contact">Contact</NavLink>
+              <NavLink
+                tag={Link}
+                to="/contact"
+                onClick={() => setCollapsed(true)}
+              >
+                Contact
+              </NavLink>
             </NavItem>
             <NavItem>
-              <Button tag={Link} className="appointmentbutton" to="/book-appointment">Book appointment</Button>
+              <Button
+                tag={Link}
+                className="appointmentbutton"
+                to="/book-appointment"
+                onClick={() => setCollapsed(true)}
+              >
+                Book appointment
+              </Button>
             </NavItem>
           </ul>
         </Collapse>

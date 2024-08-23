@@ -25,31 +25,43 @@ header {
     white-space: normal;
     text-align: center;
     word-break: break-all;
+    display: flex;
+    align-items: center;
 }
+
 .libre-baskerville-bold {
     font-family: "Libre Baskerville", serif;
     font-weight: 700;
     font-style: normal;
 }
 
+.navbar-logo {
+    max-height: 50px; /* Adjust the height as needed */
+    margin-right: 10px; /* Space between the logo and brand name */
+    vertical-align: middle; /* Align with the text */
+}
+
 .box-shadow {
     box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); /* Light shadow for depth */
 }
 
+/* Navigation Items */
 .navbar-nav {
     justify-content: flex-start; /* Aligns items to the left */
     margin-right: auto;
+    text-align: center; /* Center align in mobile view */
 }
 
 .nav-item {
     margin-right: 15px; /* Space between navigation items */
 }
 
+/* Collapsed Navbar Styling */
 .navbar-collapse {
     flex-grow: 0; /* Limits expansion of navbar to avoid taking unnecessary space */
 }
 
-/* Specific button styling, targeting only the appointment button */
+/* Appointment Button Styles */
 .navbar-nav .nav-item .appointmentbutton,
 .navbar-nav .nav-item .appointmentbutton:hover {
     border: 2px solid black; /* Distinct border */
@@ -67,9 +79,10 @@ header {
 .navbar-nav .nav-item .appointmentbutton:hover {
     background-color: black; /* Black background on hover */
     color: white; /* White text on hover */
-    border: 2px solid black; /* Changes border to white on hover for contrast */
+    border: 2px solid black; /* Keeps border black */
 }
 
+/* Navbar Link Underline Animation */
 .nav-link, .dropdown-toggle {
     position: relative;
     transition: color 0.3s ease; /* Smooth transition for text color */
@@ -87,8 +100,6 @@ header {
 
 .nav-link:hover, .dropdown-toggle:hover {
     text-decoration: none;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 3px;
 }
 
 .nav-link:hover::after, .dropdown-toggle:hover::after {
@@ -128,4 +139,111 @@ header {
     outline: none; /* Only remove outlines if replacing with another focus style */
     background-color: #f8f8f8; /* Subtle background change */
     box-shadow: inset 0 0 0 2px #555; /* Subtle shadow or border-like effect */
+}
+
+/* NavbarToggler styling */
+.toggler-icon {
+    position: relative;
+    display: block;
+    width: 24px;
+    height: 20px;
+}
+
+.toggler-icon span {
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background-color: black;
+    left: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.toggler-icon span:nth-child(1) {
+    top: 0;
+}
+
+.toggler-icon span:nth-child(2) {
+    top: 9px;
+}
+
+.toggler-icon span:nth-child(3) {
+    top: 18px;
+}
+
+/* When the menu is open, apply transformations */
+.navbar-toggler.open .toggler-icon span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 9px;
+}
+
+.navbar-toggler.open .toggler-icon span:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar-toggler.open .toggler-icon span:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 9px;
+}
+
+/* Fullscreen Navbar for Mobile */
+@media (max-width: 768px) {
+    .navbar-brand {
+        flex-direction: column; /* Stack logo and brand name vertically */
+        align-items: center; /* Center align items */
+        margin-bottom: 20px; /* Add space below logo and brand */
+    }
+
+    .navbar-logo {
+        display: none; /* Hide logo in mobile view */
+    }
+
+    .navbar-brand h3 {
+        display: block;
+        font-size: 1.5rem;
+        margin-bottom: 20px; /* Space below brand name */
+        text-align: center;
+    }
+
+    .navbar-toggler {
+        margin-left: auto; /* Push the toggler to the right */
+        position: absolute; /* Ensure the toggler is at the top */
+        top: 15px;
+        right: 15px;
+        z-index: 1100; /* Ensure it’s on top of other elements */
+    }
+
+    .navbar-collapse {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #f4f4f4;
+        z-index: 999; /* Ensures it covers the whole screen */
+        text-align: center; /* Center align text for mobile view */
+        overflow-y: auto; /* Enable scrolling in case of overflow */
+        padding-top: 120px; /* Add extra space for better alignment */
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 20px; /* Add space between the brand/logo and menu items */
+    }
+
+    .nav-item {
+        margin-right: 0; /* Removes right margin for items */
+        margin-bottom: 20px; /* Space between items */
+    }
+
+    .dropdown-menu {
+        background-color: transparent; /* Ensure dropdown blends with the background */
+        border: none; /* Removes border */
+        box-shadow: none;
+    }
+
+    .dropdown-item {
+        font-size: 1.5rem;
+        text-align: center;
+    }
 }
