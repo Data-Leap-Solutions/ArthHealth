@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import {
   Collapse,
   Navbar,
@@ -12,7 +12,7 @@ import {
   DropdownItem,
   Button,
 } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./NavMenu.css";
 import logo from "./../assets/ahcLogo.png";
 
@@ -24,11 +24,15 @@ const NavMenu = () => {
     About: false,
   });
   const [activeSection, setActiveSection] = useState("");
+  const [activeItem, setActiveItem] = useState("");
+
+  const location = useLocation();
 
   const toggleNavbar = useCallback(() => setCollapsed(!collapsed), [collapsed]);
 
-  const handleDropdownItemClick = useCallback((sectionName) => {
+  const handleDropdownItemClick = useCallback((sectionName, itemName) => {
     setActiveSection(sectionName);
+    setActiveItem(itemName);
     setDropdownOpen((prevState) => ({
       ...prevState,
       [sectionName]: false,
@@ -41,7 +45,6 @@ const NavMenu = () => {
       ...prevState,
       [name]: true,
     }));
-    setActiveSection(name);
   }, []);
 
   const handleMouseLeave = useCallback((name) => {
@@ -49,8 +52,27 @@ const NavMenu = () => {
       ...prevState,
       [name]: false,
     }));
-    setActiveSection("");
   }, []);
+
+  useEffect(() => {
+    // Determine if the current route matches the active section/item
+    if (location.pathname.startsWith("/services")) {
+      setActiveSection("Services");
+      setActiveItem(location.pathname.split("/").pop());
+    } else if (location.pathname.startsWith("/patients")) {
+      setActiveSection("Patients");
+      setActiveItem(location.pathname.split("/").pop());
+    } else if (location.pathname.startsWith("/about")) {
+      setActiveSection("About");
+      setActiveItem(location.pathname.split("/").pop());
+    } else if (location.pathname === "/contact") {
+      setActiveSection("Contact");
+      setActiveItem(""); // Clear the active item since this is not a dropdown item
+    } else {
+      setActiveSection(""); // Clear active section if not in any dropdown
+      setActiveItem(""); // Clear active item
+    }
+  }, [location]);
 
   return (
     <header>
@@ -96,7 +118,7 @@ const NavMenu = () => {
                 <DropdownToggle
                   nav
                   caret={false}
-                  className={activeSection === section ? "underline" : ""}
+                  className={`${activeSection === section ? "active-section" : ""}`}
                 >
                   {section}
                 </DropdownToggle>
@@ -106,63 +128,151 @@ const NavMenu = () => {
                       <DropdownItem
                         tag={Link}
                         to="/services/physical-therapy"
-                        onClick={() => handleDropdownItemClick("Services")}
+                        onClick={() =>
+                          handleDropdownItemClick(
+                            "Services",
+                            "physical-therapy"
+                          )
+                        }
+                        className={
+                          activeItem === "physical-therapy" ? "active-item" : ""
+                        }
                       >
                         Physical Therapy
                       </DropdownItem>
                       <DropdownItem
                         tag={Link}
                         to="/services/balance-and-gait-rehabilitation"
-                        onClick={() => handleDropdownItemClick("Services")}
+                        onClick={() =>
+                          handleDropdownItemClick(
+                            "Services",
+                            "balance-and-gait-rehabilitation"
+                          )
+                        }
+                        className={
+                          activeItem === "balance-and-gait-rehabilitation"
+                            ? "active-item"
+                            : ""
+                        }
                       >
                         Balance and Gait Rehabilitation
                       </DropdownItem>
                       <DropdownItem
                         tag={Link}
                         to="/services/workers-compensation"
-                        onClick={() => handleDropdownItemClick("Services")}
+                        onClick={() =>
+                          handleDropdownItemClick(
+                            "Services",
+                            "workers-compensation"
+                          )
+                        }
+                        className={
+                          activeItem === "workers-compensation"
+                            ? "active-item"
+                            : ""
+                        }
                       >
                         Workers Compensation
                       </DropdownItem>
                       <DropdownItem
                         tag={Link}
                         to="/services/manual-therapy"
-                        onClick={() => handleDropdownItemClick("Services")}
+                        onClick={() =>
+                          handleDropdownItemClick(
+                            "Services",
+                            "manual-therapy"
+                          )
+                        }
+                        className={
+                          activeItem === "manual-therapy"
+                            ? "active-item"
+                            : ""
+                        }
                       >
                         Manual Therapy
                       </DropdownItem>
                       <DropdownItem
                         tag={Link}
                         to="/services/sports-rehabilitation"
-                        onClick={() => handleDropdownItemClick("Services")}
+                        onClick={() =>
+                          handleDropdownItemClick(
+                            "Services",
+                            "sports-rehabilitation"
+                          )
+                        }
+                        className={
+                          activeItem === "sports-rehabilitation"
+                            ? "active-item"
+                            : ""
+                        }
                       >
                         Sports Rehabilitation
                       </DropdownItem>
                       <DropdownItem
                         tag={Link}
                         to="/services/tmj-rehabilitation"
-                        onClick={() => handleDropdownItemClick("Services")}
+                        onClick={() =>
+                          handleDropdownItemClick(
+                            "Services",
+                            "tmj-rehabilitation"
+                          )
+                        }
+                        className={
+                          activeItem === "tmj-rehabilitation"
+                            ? "active-item"
+                            : ""
+                        }
                       >
                         TMJ Rehabilitation
                       </DropdownItem>
                       <DropdownItem
                         tag={Link}
                         to="/services/vestibular-rehabilitation"
-                        onClick={() => handleDropdownItemClick("Services")}
+                        onClick={() =>
+                          handleDropdownItemClick(
+                            "Services",
+                            "vestibular-rehabilitation"
+                          )
+                        }
+                        className={
+                          activeItem === "vestibular-rehabilitation"
+                            ? "active-item"
+                            : ""
+                        }
                       >
                         Vestibular Rehabilitation
                       </DropdownItem>
                       <DropdownItem
                         tag={Link}
                         to="/services/virtual-physical-therapy"
-                        onClick={() => handleDropdownItemClick("Services")}
+                        onClick={() =>
+                          handleDropdownItemClick(
+                            "Services",
+                            "virtual-physical-therapy"
+                          )
+                        }
+                        className={
+                          activeItem === "virtual-physical-therapy"
+                            ? "active-item"
+                            : ""
+                        }
                       >
                         Virtual Physical Therapy
                       </DropdownItem>
                       <DropdownItem
                         tag={Link}
                         to="/services/complimentary-screening"
-                        onClick={() => handleDropdownItemClick("Services")}
+                        onClick={() =>
+                          handleDropdownItemClick(
+                            "Services",
+                            "complimentary-screening"
+                          )
+                        }
+                        className={
+                          activeItem === "complimentary-screening"
+                            ? "active-item"
+                            : ""
+                        }
                       >
                         Complimentary Screening
                       </DropdownItem>
@@ -173,14 +283,34 @@ const NavMenu = () => {
                       <DropdownItem
                         tag={Link}
                         to="/patients/patient-information"
-                        onClick={() => handleDropdownItemClick("Patients")}
+                        onClick={() =>
+                          handleDropdownItemClick(
+                            "Patients",
+                            "patient-information"
+                          )
+                        }
+                        className={
+                          activeItem === "patient-information"
+                            ? "active-item"
+                            : ""
+                        }
                       >
                         Patient Information
                       </DropdownItem>
                       <DropdownItem
                         tag={Link}
                         to="/patients/direct-access"
-                        onClick={() => handleDropdownItemClick("Patients")}
+                        onClick={() =>
+                          handleDropdownItemClick(
+                            "Patients",
+                            "direct-access"
+                          )
+                        }
+                        className={
+                          activeItem === "direct-access"
+                            ? "active-item"
+                            : ""
+                        }
                       >
                         Direct Access
                       </DropdownItem>
@@ -191,8 +321,17 @@ const NavMenu = () => {
                       <DropdownItem
                         tag={Link}
                         to="/about/meet-our-team"
-                        onClick={() => handleDropdownItemClick("About")}
-                      >
+                        onClick={() =>
+                          handleDropdownItemClick(
+                            "About",
+                            "meet-our-team"
+                          )
+                        }
+                        className={
+                          activeItem === "meet-our-team"
+                            ? "active-item"
+                            : ""
+                        }>
                         Meet Our Team
                       </DropdownItem>
                     </>
@@ -204,6 +343,7 @@ const NavMenu = () => {
               <NavLink
                 tag={Link}
                 to="/contact"
+                className={activeSection === "Contact" ? "active-section" : ""}
                 onClick={() => setCollapsed(true)}
               >
                 Contact

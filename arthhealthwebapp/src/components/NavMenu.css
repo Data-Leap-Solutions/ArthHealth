@@ -247,3 +247,34 @@ header {
         text-align: center;
     }
 }
+
+/* Active section left half underline */
+.active-section {
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.active-section::before {
+    content: '';
+    position: absolute;
+    left: 0; /* Start from the left */
+    width: 50%; /* Cover half the width */
+    bottom: 0;
+    height: 2px;
+    background-color: black;
+}
+
+/* Full underline for active dropdown item */
+.active-item {
+    position: relative;
+}
+
+.active-item::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 2px;
+    background-color: black;
+}
