@@ -1,0 +1,28 @@
+/* Layout styles to ensure the footer sticks to the bottom of the page when content is minimal */
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  .layout-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Makes sure the page takes up the full viewport height */
+  }
+  
+  .content-wrapper {
+    flex-grow: 1; /* This will allow the content to grow and push the footer down */
+  }
+  
+  .main-content {
+    padding-top: 20px; /* Adjust padding as needed */
+  }
+  
+  /* Footer styles */
+  footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+  }
+  

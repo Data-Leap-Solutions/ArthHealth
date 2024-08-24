@@ -59,6 +59,9 @@ const NavMenu = () => {
     if (location.pathname.startsWith("/services")) {
       setActiveSection("Services");
       setActiveItem(location.pathname.split("/").pop());
+    } else if (location.pathname.startsWith("/insurance")) {
+      setActiveSection("Insurance");
+      setActiveItem(location.pathname.split("/").pop());
     } else if (location.pathname.startsWith("/patients")) {
       setActiveSection("Patients");
       setActiveItem(location.pathname.split("/").pop());
@@ -82,7 +85,7 @@ const NavMenu = () => {
         light
       >
         <NavbarBrand tag={Link} to="/">
-          <img src={logo} alt="Arth Health Club Logo" className="navbar-logo" />
+          {/* <img src={logo} alt="Arth Health Club Logo" className="navbar-logo" /> */}
           <h3 className="libre-baskerville-bold">Arth Health Club</h3>
         </NavbarBrand>
         <NavbarToggler
@@ -105,7 +108,7 @@ const NavMenu = () => {
             <li className="nav-item mobile-brand-name d-block d-sm-none">
               <h3 className="libre-baskerville-bold text-center">Arth Health Club</h3>
             </li>
-            {["Services", "Patients", "About"].map((section) => (
+            {["Services","Insurance","Patients", "About"].map((section) => (
               <Dropdown
                 key={section}
                 nav
@@ -275,6 +278,42 @@ const NavMenu = () => {
                         }
                       >
                         Complimentary Screening
+                      </DropdownItem>
+                    </>
+                  )}
+                  {section === "Insurance" && (
+                    <>
+                      <DropdownItem
+                        tag={Link}
+                        to="/insurance/insurance-verification"
+                        onClick={() =>
+                          handleDropdownItemClick(
+                            "Insurance",
+                            "insurance-verification"
+                          )
+                        }
+                        className={
+                          activeItem === "insurance-verification"
+                            ? "active-item"
+                            : ""
+                        }>
+                        Insurance Verification
+                      </DropdownItem>
+                      <DropdownItem
+                        tag={Link}
+                        to="/insurance/in-network-insurance"
+                        onClick={() =>
+                          handleDropdownItemClick(
+                            "Insurance",
+                            "in-network-insurance"
+                          )
+                        }
+                        className={
+                          activeItem === "in-network-insurance"
+                            ? "active-item"
+                            : ""
+                        }>
+                        In-Network Insurance
                       </DropdownItem>
                     </>
                   )}

@@ -13,7 +13,7 @@ import  ComplimentaryScreenings  from "./components/ComplimentaryScreenings";
 import  SportsRehabilitation  from "./components/SportsRehabilitation";
 import  PatientInformation  from "./components/PatientInformation";
 import  MeetOurTeam from "./components/MeetOurTeam";
-
+import Insurance from "./components/Insurance";
 
 
 const AppRoutes = [
@@ -21,7 +21,14 @@ const AppRoutes = [
         index: true,
         element: <Home />
     },
-
+    {
+        path: '/insurance/insurance-verification',
+        element: <Insurance />
+    },
+    {
+        path: '/insurance/in-network-insurance',
+        element: <Insurance />
+    },
     {
         path: '/services/balance-and-gait-rehabilitation',
         element: <BalanceGaitRehabilitation />

@@ -1,0 +1,82 @@
+/* Container for the insurance component */
+#insurance {
+    padding: 100px 20px 50px; /* Adds padding to the section */
+    background-color: #f9f9f9; /* Light background */
+}
+
+/* Content wrapper to align the circles and text */
+.insurance-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Space between each section */
+}
+
+/* Individual insurance section styling */
+.insurance-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Circle styling */
+.insurance-circle {
+    width: 60px;
+    height: 60px;
+    background-color: #333; /* Dark background for circles */
+    color: #fff; /* White text inside the circle */
+    border-radius: 50%; /* Make the circle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+/* Text and link styling */
+.insurance-text {
+    flex: 1;
+}
+
+    .insurance-text h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .insurance-text p {
+        margin-bottom: 20px;
+        line-height: 1.6;
+        color: #666; /* Grey text for readability */
+    }
+
+/* Details link styling */
+.details-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333; /* Dark background color */
+    color: #fff; /* White text */
+    text-decoration: none; /* Removes underline */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+    .details-link:hover {
+        background-color: #fff; /* Light background on hover */
+        color: #333; /* Dark text on hover */
+        border: 1px solid #333; /* Border on hover */
+    }
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .insurance-content {
+        text-align: center;
+    }
+
+    .insurance-section {
+        flex-direction: column;
+    }
+
+    .insurance-circle {
+        margin-bottom: 20px;
+    }
+}
