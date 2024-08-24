@@ -14,7 +14,7 @@ import {
 } from "reactstrap";
 import { Link, useLocation } from "react-router-dom";
 import "./NavMenu.css";
-import logo from "./../assets/ahcLogo.png";
+// import logo from "./../assets/ahcLogo.png";
 
 const NavMenu = () => {
   const [collapsed, setCollapsed] = useState(true);
