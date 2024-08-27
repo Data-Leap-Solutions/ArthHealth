@@ -25,10 +25,5 @@ jobs:
       run: npm run build # Build the project, generating the build folder
       working-directory: arthhealthwebapp # Change to your React app directory
 
-    - name: Install Netlify CLI
-      run: npm install -g netlify-cli # Install Netlify CLI globally
-
-    - name: Deploy to Netlify
-      run: netlify deploy --dir=build --prod --auth=$NETLIFY_AUTH_TOKEN # Deploy the build folder to Netlify
-      env:
-        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }} # Use the Netlify Auth Token from GitHub Secrets
+    - name: Trigger Netlify Build Hook
+      run: curl -X POST -d '{}' ${{ secrets.NETLIFY_BUILD_HOOK }} # Trigger the Netlify build hook
