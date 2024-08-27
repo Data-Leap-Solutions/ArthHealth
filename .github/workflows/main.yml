@@ -1,15 +1,23 @@
-name: Deploy netlify site
+name: Deploy to Netlify
 
 on:
   push:
     branches: [main]
-    
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install dependencies
+      run: npm install
+    
+    - name: Build React app
+      run: npm run build # This assumes your React app is built using npm run build
+
     
     - name: "Deployed site"
       run: curl -X POST -d {} ${{ secrets.NETLIFY_BUILD_HOOK }}
