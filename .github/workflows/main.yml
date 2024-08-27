@@ -22,7 +22,7 @@ jobs:
     
     - name: Build React app
       run: npm run build # This assumes your React app is built using npm run build
-
+      working-directory: arthhealthwebapp # Change to your React app directory
     
     - name: "Deployed site"
       run: curl -X POST -d {} ${{ secrets.NETLIFY_BUILD_HOOK }}
