@@ -2,7 +2,7 @@ name: Deploy to Netlify
 
 on:
   push:
-    branches: [main]
+    branches: [main] # Trigger deployment on push to the main branch
 
 jobs:
   build:
@@ -12,17 +12,21 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Set up working directory
-      run: cd arthhealthwebapp # Change to your React app directory
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18' # Specify the Node.js version
 
     - name: Install dependencies
       run: npm install
-      working-directory: arthhealthwebapp # Change to your React app directory
-    
     
     - name: Build React app
-      run: npm run build # This assumes your React app is built using npm run build
-      working-directory: arthhealthwebapp # Change to your React app directory
-    
-    - name: "Deployed site"
-      run: curl -X POST -d {} ${{ secrets.NETLIFY_BUILD_HOOK }}
+      run: npm run build # Build the project, generating the build folder
+
+    - name: Install Netlify CLI
+      run: npm install -g netlify-cli # Install Netlify CLI globally
+
+    - name: Deploy to Netlify
+      run: netlify deploy --dir=build --prod --auth=$NETLIFY_AUTH_TOKEN # Deploy the build folder to Netlify
+      env:
+        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }} # Use the Netlify Auth Token from GitHub Secrets
