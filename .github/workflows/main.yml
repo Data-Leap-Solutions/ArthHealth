@@ -1,4 +1,4 @@
-name: Deploy to Netlify
+zname: Deploy to Netlify
 
 on:
   push:
@@ -11,6 +11,10 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
+
+    - name: Set up working directory
+      run: ArthHealth/arthhealthwebapp # Change to your React app directory
+
 
     - name: Install dependencies
       run: npm install
