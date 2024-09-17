@@ -1,35 +1,46 @@
 ﻿#contact {
     padding: 60px 20px;
-    background-color: #f8f8f8;
+    /*background-color: #e4e4df; A light neutral background */
     text-align: left;
 }
 
 .contact-content {
     display: flex;
-    flex-direction: column;
-    max-width: 800px;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 1200px;
     margin: 0 auto;
-    background-color: #fff;
-    padding: 40px;
+    padding: 60px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   
+}
+
+.contact-info {
+    flex: 1;
+    padding-right: 40px;
 }
 
 .contact-info h2 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin-bottom: 20px;
-    color: #333;
+    color: #3d3d3d;
 }
 
 .contact-info p {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     font-size: 1.2rem;
     line-height: 1.6;
+    color: #333;
 }
 
 .contact-details p {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     font-size: 1.1rem;
+    color: #666;
+}
+
+.contact-form {
+    flex: 1;
 }
 
 .contact-form .form-group {
@@ -43,74 +54,65 @@
     display: block;
 }
 
-.required-asterisk {
-    color: red;
-    margin-left: 2px;
-}
-
 .name-fields {
     display: flex;
     gap: 20px;
 }
 
-.name-fields input {
-    flex: 1;
-}
-
 .contact-form input, .contact-form textarea {
     width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    padding: 12px;
+    border-radius: 20px; /* Rounded corners */
+    border: 2px solid black; /* Black border */
+    background-color: transparent; /* No white background */
     font-size: 1rem;
+    color: black; /* Text color */
+    margin-top: 5px;
+    transition: border-color 0.3s, box-shadow 0.3s; /* Transition for focus effect */
 }
 
-.contact-form textarea {
-    resize: vertical;
-    height: 150px;
+.contact-form input:focus, .contact-form textarea:focus {
+    border-color: black; /* Black border on focus */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for focus effect */
+    outline: none; /* Removes default focus outline */
 }
+
+.contact-form .form-group input::placeholder,
+.contact-form .form-group textarea::placeholder {
+    color: #666; /* Placeholder text color */
+}
+
+.contact-form input::-webkit-autofill,
+.contact-form textarea::-webkit-autofill {
+    background-color: transparent !important; /* Ensures autofill doesn’t apply white */
+}
+
 
 .contact-button {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    background-color: transparent; /* No background */
+    color: black; /* Text color */
+    padding: 12px 25px;
+    border: 2px solid black; /* Border to match inputs */
+    border-radius: 20px; /* Rounded corners */
     font-size: 1.1rem;
-    transition: background-color 0.3s;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Smooth transition */
 }
 
 .contact-button:hover {
-    background-color: #555;
+    background-color: black; /* Black background on hover */
+    color: white; /* White text on hover */
+    border-color: black; /* Keeps border black on hover */
 }
 
-.error {
-    color: red;
-    font-size: 0.875rem;
-    margin-top: 5px;
-    display: block;
-}
 
 .alert-banner {
-    margin: 10px 0;
     background-color: #4CAF50;
     color: white;
     padding: 10px;
     text-align: center;
     border-radius: 5px;
     font-size: 1rem;
-    transition: opacity 0.3s ease-in-out;
-    opacity: 1;
-}
-
-.alert-banner.hidden {
-    opacity: 0;
-    visibility: hidden;
-}
-
-@media (max-width: 768px) {
-    .contact-content {
-        padding: 20px;
-    }
+    margin-top: 20px;
+    display: block;
 }

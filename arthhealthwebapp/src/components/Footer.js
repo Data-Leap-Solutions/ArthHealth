@@ -19,7 +19,7 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link to="/services/physical-therapy">
+              <Link to="/services/sports-rehabilitation">
                 Sports Rehabilitation
               </Link>
             </li>
