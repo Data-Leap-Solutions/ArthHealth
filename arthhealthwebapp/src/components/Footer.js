@@ -1,22 +1,38 @@
 import React from 'react';
 import './Footer.css';
-
+import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-column">
           <h4>About Us</h4>
-          <p>Arth Physical Therapy provides comprehensive services to aid in your recovery. Our focus is your wellness and improvement.</p>
+          <p>Arth Physical Therapy provides<br/> comprehensive services to aid <br/> in your recovery.</p>
         </div>
 
         <div className="footer-column">
           <h4>Quick Links</h4>
           <ul>
-            <li><a href="/services/physical-therapy">Physical Therapy</a></li>
-            <li><a href="/services/sports-rehabilitation">Sports Rehabilitation</a></li>
-            <li><a href="/services/manual-therapy">Manual Therapy</a></li>
-            <li><a href="/contact">Contact Us</a></li>
+            <li>
+              <Link to="/services/physical-therapy">
+                Physical Therapy
+              </Link>
+            </li>
+            <li>
+              <Link to="/services/physical-therapy">
+                Sports Rehabilitation
+              </Link>
+            </li>
+            <li>
+              <Link to="/services/manual-therapy">
+                Manual Therapy
+              </Link>
+            </li>
+            <li>
+              <Link to="/contact">
+                Contact Us
+              </Link>
+            </li>
           </ul>
         </div>
 

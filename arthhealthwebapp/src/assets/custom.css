@@ -1,14 +1,33 @@
-/* Provide sufficient contrast against white background */
+/* Global link styling */
 a {
   color: #0366d6;
+  text-decoration: none; /* Remove underline by default */
 }
 
+a:hover {
+  color: #024a9b; /* Darken on hover for visual feedback */
+  text-decoration: underline; /* Add underline on hover */
+}
+
+/* Code block styling */
 code {
-  color: #E01A76;
+  color: #E01A76; /* Vivid magenta */
+  background-color: #f5f5f5; /* Light grey background for contrast */
+  padding: 0.2em 0.4em; /* Add padding to make it more readable */
+  border-radius: 3px; /* Slightly rounded corners */
 }
 
+/* Primary button styling */
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  color: #fff; /* White text for contrast */
+  background-color: #1b6ec2; /* Primary blue background */
+  border-color: #1861ac; /* Slightly darker border */
+  padding: 0.5em 1em; /* Add padding for better spacing */
+  border-radius: 4px; /* Rounded corners for a modern look */
+  transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transitions */
+}
+
+.btn-primary:hover {
+  background-color: #155a9c; /* Darker blue on hover */
+  border-color: #134e85; /* Match border to hover color */
 }

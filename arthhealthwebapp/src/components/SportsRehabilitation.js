@@ -1,5 +1,6 @@
 import React from 'react';
 import './SportsRehabilitation.css';
+import { Link } from 'react-router-dom';
 
 const SportsRehabilitation = () => {
     return (
@@ -27,7 +28,9 @@ const SportsRehabilitation = () => {
                     <p>
                         Our licensed physical therapists and certified athletic trainers work with you to assess your injury, develop a personalized rehabilitation plan, and guide you through the recovery process. Take control of your recovery and return to the field, court, or gym stronger than ever.
                     </p>
-                    <a href="/schedule" className="schedule-button">Schedule Now</a>
+                    <Link to="/book-appointment" className="schedule-button">
+                        Schedule Now
+                    </Link>
                 </div>
             </div>
         </div>

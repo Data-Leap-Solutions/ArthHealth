@@ -10,10 +10,13 @@ const App = () => {
       <Layout>
         <ScrollToTop />
         <Routes>
-          {AppRoutes.map((route, index) => {
-            const { element, path, index: isIndex } = route;
-            return <Route key={index} path={path} index={isIndex} element={element} />;
-          })}
+          {AppRoutes.map(({ element, path, index: isIndex }, routeIndex) => (
+            isIndex ? (
+              <Route key={path || routeIndex} index element={element} />
+            ) : (
+              <Route key={path || routeIndex} path={path} element={element} />
+            )
+          ))}
         </Routes>
       </Layout>
     </Router>

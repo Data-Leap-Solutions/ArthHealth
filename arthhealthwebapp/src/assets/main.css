@@ -1,29 +1,41 @@
-﻿/* main.css or similar file */
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+﻿/* Global Styles for Fonts and Background */
 body {
-    background-color: #f4f4f4; /* Lighter shade of the original color */
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box; /* Ensures padding and borders don't affect the width */
-
     font-family: 'Libre Baskerville', serif;
-}
-.libre-baskerville-regular {
-    font-family: "Libre Baskerville", serif;
-    font-weight: 400;
-    font-style: normal;
-}
-
-.libre-baskerville-bold {
-    font-family: "Libre Baskerville", serif;
-    font-weight: 700;
-    font-style: normal;
-}
-
-.libre-baskerville-regular-italic {
-    font-family: "Libre Baskerville", serif;
-    font-weight: 400;
-    font-style: italic;
-}
-
-
+    background-color: #ffffff; /* Assuming white background for contrast */
+    color: #333333; /* Dark text for readability */
+  }
+  
+  /* Provide sufficient contrast against a white background for links */
+  a {
+    color: #0366d6; /* Blue with good contrast */
+    text-decoration: none; /* Remove underline by default */
+  }
+  
+  a:hover {
+    color: #024a9b; /* Darker blue for hover state */
+    text-decoration: underline; /* Underline on hover for clarity */
+  }
+  
+  /* Code element styling */
+  code {
+    color: #E01A76; /* Vivid magenta for code to stand out */
+    background-color: #f6f8fa; /* Light grey background for code snippets */
+    padding: 0.2em 0.4em; /* Add padding for better readability */
+    border-radius: 3px; /* Rounded edges for a cleaner look */
+  }
+  
+  /* Button Styling for Primary Buttons */
+  .btn-primary {
+    color: #ffffff;
+    background-color: #1b6ec2; /* Maintain primary blue for button */
+    border-color: #1861ac; /* Border matches button color */
+    padding: 0.5em 1em; /* Add padding for better button appearance */
+    border-radius: 4px; /* Slightly round the edges for modern look */
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth hover transition */
+  }
+  
+  .btn-primary:hover {
+    background-color: #155a9c; /* Darker shade for hover state */
+    border-color: #134e85; /* Match hover border with background */
+  }
+  

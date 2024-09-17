@@ -12,11 +12,6 @@
     border-right: none; /* Removes the simulated cursor */
 }
 
-/* Remove animation properties */
-.landingpagetitle h1 {
-    /* No animation applied anymore */
-}
-
 /* Banner Styles */
 #banner {
     height: 90vh; /* Maintains full viewport height */
@@ -81,53 +76,66 @@
     }
 }
 /* Services.css */
+/* Services Section */
 #services {
-    padding-top: 50px;
-    padding-bottom: 50px;
-    margin-bottom: 40px; /* Adds space below the services section */
-    /*    background-color: #f3f3f3;*/
+    padding: 50px 0;
+    margin-bottom: 40px;
 }
 
-    #services h2 {
-        font-size: 2.5rem;
-        font-weight: bold;
-        margin-bottom: 30px;
-    }
+#services h2 {
+    font-weight: bold;
+    margin-bottom: 30px;
+    
+}
 
+/* Services Grid Layout */
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Creates exactly three columns */
-    gap: 20px; /* Space between grid items */
-    margin-bottom: 30px; /* Adds some space below the grid for any following content */
+    grid-template-columns: repeat(3, 1fr); /* Three-column layout */
+    gap: 20px; /* Spacing between grid items */
+    margin-bottom: 30px;
 }
 
 @media (max-width: 768px) {
     .services-grid {
-        grid-template-columns: 1fr; /* Single column layout for mobile devices */
+        grid-template-columns: 1fr; /* Single column for mobile devices */
+        gap: 30px; /* Extra space between items for mobile */
     }
 }
 
+/* Service Item Styling */
 .service-item {
     position: relative;
-    text-decoration: none; /* Removes underline from links */
-    color: inherit; /* Inherits text color from parent */
-    overflow: hidden; /* Ensures no overflow content */
-    transition: color 0.3s ease; /* Smooth transition for color changes */
+    text-decoration: none; /* Remove link underline */
+    color: inherit; /* Inherit parent text color */
+    overflow: hidden; /* Hide overflow content */
+    transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition for color and scaling */
 }
 
-    .service-item img {
-        width: 100%;
-        display: block;
-        transition: filter 0.3s ease; /* Smooth transition for blurring */
-    }
+.service-item img {
+    width: 100%;
+    display: block;
+    transition: transform 0.3s ease, filter 0.3s ease; /* Add smooth zoom and blur transition */
+}
 
+.service-item:hover img {
+    transform: scale(1.05); /* Slight zoom on hover */
+    filter: brightness(0.8); /* Slightly darken the image */
+}
+
+/* Service Label Styling */
 .service-label {
-    font-size: 1.5rem; /* Larger font size for heading-like appearance */
-    font-weight: bold; /* Makes text bold */
-    margin-top: 15px; /* Adds more space between the image and the label */
-    transition: color 0.3s ease; /* Transition for color change on hover */
+    font-size: 1.5rem; /* Font size for the service name */
+
+    margin-top: 15px;
+    transition: color 0.3s ease; /* Smooth color transition */
 }
 
+.service-item:hover .service-label {
+    color: #0366d6; /* Dark blue on hover */
+}
+
+/* Service Info Reveal Effect */
 .service-info {
     position: absolute;
     top: 0;
@@ -137,238 +145,272 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: transparent; /* No background color */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
     opacity: 0; /* Hidden by default */
-    transition: opacity 0.3s ease, background-color 0.3s ease;
+    transition: opacity 0.3s ease; /* Smooth fade-in effect */
 }
 
-.service-item:hover .service-label {
-    color: #0366d6; /* Darkens the label on hover */
+.service-item:hover .service-info {
+    opacity: 1; /* Show info on hover */
 }
 
-/*Bookingsection*/
-/* BookingSection.css */
+/* Service Description Styling */
+.service-description {
+    font-size: 1rem;
+    color: #fff; /* White text for better contrast against dark background */
+    text-align: center; /* Center-align the description */
+    padding: 0 10px; /* Add padding to the description */
+}
+
+/* Booking Section */
 #booking {
-    background-color: #f4f4f4; /* Light grey background */
-    padding: 40px 20px; /* Padding around the section */
-    text-align: left; /* Aligns text to the left */
-    margin-bottom: 40px; /* Adds space below the booking section */
+    /*background-color: #f4f4f4; /* Light grey background */
+    padding: 40px 20px;
+    margin-bottom: 40px; 
+    text-align: left; 
 }
 
+/* Flexbox layout for booking content */
 .booking-content {
-    display: flex; /* Use flexbox to align booking-title and booking-links side by side */
-    align-items: center; /* Vertically centers the content */
-    margin-bottom: 40px; /* Space below the booking section */
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; /* Distribute content evenly */
+    margin-bottom: 40px; 
 }
 
 .booking-title {
-    flex: 1 1 60%; /* Takes up approximately 60% of the container width */
+    flex: 1 1 60%; /* Takes up 60% of container width */
+    padding-right: 20px; /* Add padding for spacing */
 }
 
-    .booking-title h1 {
-        font-size: 2.5rem; /* Large font size for the title */
-        margin-bottom: 20px; /* Space below the title */
-    }
+.booking-title h2 {
+  font-weight: bold;
+  margin-bottom: 30px;
+}
 
-    .booking-title p {
-        font-size: 1.2rem; /* Slightly larger font size for subtitle */
-        color: #666; /* Grey text for the description */
-    }
+.booking-title p {
+    font-size: 1.2rem;
+    color: #666; 
+}
 
 .booking-links {
-    flex: 1 1 40%; /* Takes up approximately 40% of the container width */
+    flex: 1 1 40%; 
+    background-color: #fff;
+    padding: 20px; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
     display: flex;
-    flex-direction: column; /* Stack items vertically */
-    align-items: flex-start; /* Align links to the left */
-    justify-content: center; /* Center the links vertically */
-    background-color: #fff; /* White background for contrast */
-    padding: 20px; /* Padding inside the box */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    flex-direction: column; 
+    justify-content: center; 
 }
 
-    .booking-links ul {
-        list-style-type: none; /* Removes default list styling */
-        padding: 0; /* Removes default padding */
-    }
+.booking-links ul {
+    list-style-type: none; 
+    padding: 0; 
+}
 
-    .booking-links li {
-        font-size: 1.5rem; /* Font size for list items */
-        margin-bottom: 10px; /* Space between items */
-        display: flex;
-        justify-content: space-between; /* Space out text and link */
-    }
+.booking-links li {
+    font-size: 1.5rem; 
+    margin-bottom: 10px; 
+}
 
-    .booking-links a {
-        color: #000; /* Black color for links */
-        text-decoration: none; /* Removes underline from links */
-        font-weight: bold; /* Makes font bold */
-        transition: color 0.3s ease; /* Smooth transition for hover effect */
-    }
+.booking-links a {
+    color: #000; 
+    text-decoration: none; 
+    font-weight: bold; 
+    transition: color 0.3s ease; 
+}
 
-        .booking-links a:hover {
-            color: #0056b3; /* Color change on hover */
-        }
+.booking-links a:hover {
+    color: #0056b3; 
+}
 
+/* Discover Section */
 .discover-section {
-    display: flex; /* Use flexbox to align the image and text side by side */
-    align-items: center; /* Align items vertically center */
-    margin-top: 40px; /* Space above the section */
+    display: flex; 
+    align-items: center; 
+    margin-top: 40px; 
 }
 
 .discover-image {
-    flex: 1 1 50%; /* Image takes up 50% of the container */
-    padding-right: 20px; /* Space between image and text */
+    flex: 1 1 50%; 
+    padding-right: 20px; 
 }
 
-    .discover-image img {
-        width: 100%; /* Ensures the image fills the container */
-        height: auto; /* Keeps the image aspect ratio */
-    }
+.discover-image img {
+    width: 100%; 
+    height: auto; 
+    border-radius: 5px; /* Adds rounded corners to the image */
+}
 
 .discover-text {
-    flex: 1 1 50%; /* Text takes up 50% of the container */
+    flex: 1 1 50%; 
 }
 
-    .discover-text h2 {
-        font-size: 2rem; /* Font size for the heading */
-        margin-bottom: 20px; /* Space below the heading */
-    }
-
-    .discover-text p {
-        font-size: 1.2rem; /* Font size for the paragraph */
-        margin-bottom: 30px; /* Space below the paragraph */
-    }
-
-.learn-more-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #333; /* Dark background color */
-    color: #fff; /* White text */
-    text-decoration: none; /* Removes underline */
-    border-radius: 5px; /* Rounded corners */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effect */
+.discover-text h2 {
+    font-size: 2rem; 
+    margin-bottom: 20px; 
 }
 
-    .learn-more-button:hover {
-        background-color: #fff; /* Light background on hover */
-        color: #333; /* Dark text on hover */
-        border: 1px solid #333; /* Border on hover */
-    }
+.discover-text p {
+    font-size: 1.2rem; 
+    margin-bottom: 30px; 
+}
 
+/* Learn More Button Styling */
+.learn-more-button,
+.learn-more-button:hover {
+    border: 2px solid black; /* Distinct border */
+    background-color: transparent; /* Transparent background */
+    color: black; /* Black text */
+    padding: 8px 20px; /* Similar padding */
+    border-radius: 20px; /* Rounded corners */
+    font-weight: bold; /* Bold text */
+    text-align: center; /* Center text */
+    display: inline-block; /* Inline block */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease; /* Transitions for hover effect */
+    text-decoration: none !important; /* Prevents any text underline */
+}
+
+.learn-more-button:hover {
+    background-color: black; /* Black background on hover */
+    color: white; /* White text on hover */
+    border: 2px solid black; /* Keeps border black */
+    transform: scale(1.05); /* Slight scale on hover */
+}
+
+/* Mobile Optimization */
 @media (max-width: 768px) {
     .booking-content {
-        flex-direction: column; /* Stack items vertically on smaller screens */
-        text-align: center; /* Center text on smaller screens */
+        flex-direction: column; /* Stack items vertically */
+        text-align: center; 
+        padding: 20px; /* Add padding for better spacing */
     }
 
     .booking-links {
-        align-items: center; /* Center align links on smaller screens */
-        margin-top: 20px; /* Add space above the links */
+        align-items: center; 
+        margin-top: 20px; 
+        padding: 30px; /* Increase padding for better spacing on mobile */
     }
 
     .discover-section {
-        flex-direction: column; /* Stack items vertically on smaller screens */
+        flex-direction: column; 
+        margin-top: 30px; /* Reduce top margin for mobile */
     }
 
     .discover-image {
-        padding-right: 0; /* Remove right padding on smaller screens */
-        margin-bottom: 20px; /* Space between image and text */
+        padding-right: 0; 
+        margin-bottom: 20px; 
     }
 
     .discover-text {
-        text-align: center; /* Center text on smaller screens */
+        text-align: center; 
     }
 }
 
-/* Testimonials.css */
+/* Testimonials Section */
 #testimonials {
     padding: 40px 20px; /* Padding around the section */
-    text-align: left; /* Aligns text to the left */
-    margin-bottom: 40px; /* Adds space below the testimonials section */
+    text-align: left; /* Align text to the left */
+    margin-bottom: 40px; /* Space below the testimonials section */
 }
 
 .section-heading {
-    font-size: 2rem; /* Font size for the section heading */
-    text-align: center; /* Center the heading */
-    margin-bottom: 20px; /* Space below the heading */
+    font-size: 2rem; 
+    text-align: center; /* Center the section heading */
+    margin-bottom: 20px; 
 }
 
+/* Flexbox layout for testimonial */
 .testimonial {
-    display: flex; /* Flexbox to align image and content side by side */
-    background-color: #fff; /* Light grey background for testimonial box */
-    padding: 20px; /* Padding inside the testimonial box */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    max-width: 800px; /* Max width for the testimonial box */
+    display: flex; 
+   
+    padding: 20px; 
+    border-radius: 10px; 
+    
+    max-width: 800px; 
     margin: 0 auto; /* Center the testimonial box */
+    transition: transform 0.3s ease; /* Smooth scale transition */
+}
+
+.testimonial:hover {
+    transform: scale(1.02); /* Slight scale effect on hover */
 }
 
 .testimonial-image {
-    flex: 1 1 30%; /* Image takes up 30% of the container */
-    padding-right: 20px; /* Space between image and content */
+    flex: 1 1 30%; 
+    padding-right: 20px; 
 }
 
-    .testimonial-image img {
-        width: 100%; /* Ensures the image fills the container */
-        height: auto; /* Keeps the image aspect ratio */
-        border-radius: 10px; /* Rounded corners for the image */
-    }
+.testimonial-image img {
+    width: 100%; 
+    height: auto; 
+    border-radius: 10px; 
+}
 
+/* Testimonial content styling */
 .testimonial-content {
-    flex: 1 1 70%; /* Content takes up 70% of the container */
+    flex: 1 1 70%; 
 }
 
-    .testimonial-content h2 {
-        font-size: 1.5rem; /* Font size for the quote */
-        margin-bottom: 10px; /* Space below the quote */
-    }
+.testimonial-content h2 {
+    font-size: 1.5rem; 
+    margin-bottom: 10px; 
+    font-style: italic; /* Stylize the quote */
+}
 
-    .testimonial-content p {
-        margin: 5px 0; /* Space between paragraphs */
-    }
+.testimonial-content p {
+    margin: 5px 0; 
+}
 
 .testimonial-author {
-    font-weight: bold; /* Bold text for the author's name */
+    font-weight: bold; 
 }
 
 .testimonial-title {
-    color: #666; /* Grey text for the title */
+    color: #666; 
 }
 
+/* Button Styling */
 .testimonial-button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #007bff; /* Blue background color */
-    color: #fff; /* White text */
-    text-decoration: none; /* Removes underline */
-    border-radius: 5px; /* Rounded corners */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effect */
-    margin-top: 10px; /* Space above the button */
-    border: none; /* Remove border */
-    cursor: pointer; /* Change cursor to pointer */
+    background-color: black; 
+    color: black; 
+    text-decoration: none; 
+    border-radius: 5px; 
+    transition: background-color 0.3s ease, color 0.3s ease; 
+    margin-top: 10px; 
+    border: none; 
+    cursor: pointer; 
 }
 
-    .testimonial-button:hover {
-        background-color: #0056b3; /* Darker blue background on hover */
-        color: #fff; /* Ensure text color stays white on hover */
-    }
+.testimonial-button:hover {
+    background-color: black; 
+}
 
+/* Mobile Responsiveness */
 @media (max-width: 768px) {
     .testimonial {
         flex-direction: column; /* Stack items vertically on smaller screens */
-        text-align: center; /* Center text on smaller screens */
+        text-align: center; 
     }
 
     .testimonial-image {
-        padding-right: 0; /* Remove right padding on smaller screens */
-        margin-bottom: 20px; /* Space between image and content */
+        padding-right: 0; 
+        margin-bottom: 20px; 
     }
 
     .testimonial-content {
-        text-align: center; /* Center text on smaller screens */
+        text-align: center; 
+    }
+
+    /* Ensure carousel fills the screen properly */
+    .carousel-root {
+        width: 100%; /* Full width on mobile */
     }
 }
+
 
 /* Contact.css */
 #contact {

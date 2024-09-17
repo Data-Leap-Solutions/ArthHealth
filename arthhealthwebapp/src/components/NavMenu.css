@@ -16,7 +16,7 @@ header {
     left: 0; /* Aligns the header to the left */
     right: 0; /* Aligns the header to the right */
     z-index: 1000; /* Ensures the header stays on top of other content */
-    background-color: #f4f4f4; /* Optional: Change to match your design */
+    background-color: #DED8D4; /* Optional: Change to match your design */
     width: 100%; /* Ensures the header spans the full width of the viewport */
 }
 
@@ -41,9 +41,11 @@ header {
     vertical-align: middle; /* Align with the text */
 }
 
+/* 
 .box-shadow {
-    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); /* Light shadow for depth */
-}
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); /* Light shadow for depth 
+} 
+*/
 
 /* Navigation Items */
 .navbar-nav {

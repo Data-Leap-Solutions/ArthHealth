@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect, useMemo } from "react";
 import {
   Collapse,
   Navbar,
@@ -14,7 +14,6 @@ import {
 } from "reactstrap";
 import { Link, useLocation } from "react-router-dom";
 import "./NavMenu.css";
-// import logo from "./../assets/ahcLogo.png";
 
 const NavMenu = () => {
   const [collapsed, setCollapsed] = useState(true);
@@ -22,6 +21,7 @@ const NavMenu = () => {
     Services: false,
     Patients: false,
     About: false,
+    Insurance: false,
   });
   const [activeSection, setActiveSection] = useState("");
   const [activeItem, setActiveItem] = useState("");
@@ -55,60 +55,85 @@ const NavMenu = () => {
   }, []);
 
   useEffect(() => {
-    // Determine if the current route matches the active section/item
-    if (location.pathname.startsWith("/services")) {
+    // Determine active section/item based on route
+    const path = location.pathname;
+    if (path.startsWith("/services")) {
       setActiveSection("Services");
-      setActiveItem(location.pathname.split("/").pop());
-    } else if (location.pathname.startsWith("/insurance")) {
+      setActiveItem(path.split("/").pop());
+    } else if (path.startsWith("/insurance")) {
       setActiveSection("Insurance");
-      setActiveItem(location.pathname.split("/").pop());
-    } else if (location.pathname.startsWith("/patients")) {
-      setActiveSection("Patients");
-      setActiveItem(location.pathname.split("/").pop());
-    } else if (location.pathname.startsWith("/about")) {
+      setActiveItem(path.split("/").pop());
+    } else if (path.startsWith("/about")) {
       setActiveSection("About");
-      setActiveItem(location.pathname.split("/").pop());
-    } else if (location.pathname === "/contact") {
+      setActiveItem(path.split("/").pop());
+    } else if (path === "/contact") {
       setActiveSection("Contact");
-      setActiveItem(""); // Clear the active item since this is not a dropdown item
+      setActiveItem("");
     } else {
-      setActiveSection(""); // Clear active section if not in any dropdown
-      setActiveItem(""); // Clear active item
+      setActiveSection("");
+      setActiveItem("");
     }
   }, [location]);
 
+  const renderDropdownItems = useCallback(
+    (section, items) =>
+      items.map((item) => (
+        <DropdownItem
+          key={item.name}
+          tag={Link}
+          to={item.path}
+          onClick={() => handleDropdownItemClick(section, item.name)}
+          className={activeItem === item.name ? "active-item" : ""}
+        >
+          {item.label}
+        </DropdownItem>
+      )),
+    [handleDropdownItemClick, activeItem]
+  );
+
+  const dropdownMenus = useMemo(() => {
+    return {
+      Services: [
+        { name: "physical-therapy", label: "Physical Therapy", path: "/services/physical-therapy" },
+        { name: "balance-and-gait-rehabilitation", label: "Balance and Gait Rehabilitation", path: "/services/balance-and-gait-rehabilitation" },
+        { name: "workers-compensation", label: "Workers Compensation", path: "/services/workers-compensation" },
+        { name: "manual-therapy", label: "Manual Therapy", path: "/services/manual-therapy" },
+        { name: "sports-rehabilitation", label: "Sports Rehabilitation", path: "/services/sports-rehabilitation" },
+        { name: "tmj-rehabilitation", label: "TMJ Rehabilitation", path: "/services/tmj-rehabilitation" },
+        { name: "vestibular-rehabilitation", label: "Vestibular Rehabilitation", path: "/services/vestibular-rehabilitation" },
+        { name: "complimentary-screening", label: "Complimentary Screening", path: "/services/complimentary-screening" }
+      ],
+      Insurance: [
+        { name: "insurance-verification", label: "Insurance Verification", path: "/insurance/insurance-verification" },
+        { name: "in-network-insurance", label: "In-Network Insurance", path: "/insurance/in-network-insurance" },
+        { name: "direct-access", label: "Direct Access", path: "/insurance/direct-access" }
+      ],
+      About: [
+        { name: "meet-our-team", label: "Meet Our Team", path: "/about/meet-our-team" },
+        { name: "patient-forms", label: "Patient Forms", path: "/about/patient-forms" },
+        { name: "faqs", label: "FAQs", path: "/about/faqs" },
+
+      ],
+      
+    };
+  }, []);
+
   return (
     <header>
-      <Navbar
-        className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow"
-        container
-        light
-      >
+      <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow" container light>
         <NavbarBrand tag={Link} to="/">
-          {/* <img src={logo} alt="Arth Health Club Logo" className="navbar-logo" /> */}
-          <h3 className="libre-baskerville-bold">Arth Health Club</h3>
+          <h3 className="libre-baskerville-bold">Arth Physical Therapy</h3>
         </NavbarBrand>
-        <NavbarToggler
-          onClick={toggleNavbar}
-          className={`mr-2 ${!collapsed ? "open" : ""}`}
-        >
+        <NavbarToggler onClick={toggleNavbar} className={`mr-2 ${!collapsed ? "open" : ""}`}>
           <div className="toggler-icon">
             <span></span>
             <span></span>
             <span></span>
           </div>
         </NavbarToggler>
-        <Collapse
-          className="d-sm-inline-flex flex-sm-row-reverse"
-          isOpen={!collapsed}
-          navbar
-        >
+        <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!collapsed} navbar>
           <ul className="navbar-nav flex-grow">
-            {/* Ensure the brand name is displayed above the first item in mobile view */}
-            <li className="nav-item mobile-brand-name d-block d-sm-none">
-              <h3 className="libre-baskerville-bold text-center">Arth Health Club</h3>
-            </li>
-            {["Services","Insurance","Patients", "About"].map((section) => (
+            {Object.keys(dropdownMenus).map((section) => (
               <Dropdown
                 key={section}
                 nav
@@ -118,283 +143,19 @@ const NavMenu = () => {
                 onMouseLeave={() => handleMouseLeave(section)}
                 toggle={() => {}}
               >
-                <DropdownToggle
-                  nav
-                  caret={false}
-                  className={`${activeSection === section ? "active-section" : ""}`}
-                >
+                <DropdownToggle nav caret={false} className={activeSection === section ? "active-section" : ""}>
                   {section}
                 </DropdownToggle>
-                <DropdownMenu>
-                  {section === "Services" && (
-                    <>
-                      <DropdownItem
-                        tag={Link}
-                        to="/services/physical-therapy"
-                        onClick={() =>
-                          handleDropdownItemClick(
-                            "Services",
-                            "physical-therapy"
-                          )
-                        }
-                        className={
-                          activeItem === "physical-therapy" ? "active-item" : ""
-                        }
-                      >
-                        Physical Therapy
-                      </DropdownItem>
-                      <DropdownItem
-                        tag={Link}
-                        to="/services/balance-and-gait-rehabilitation"
-                        onClick={() =>
-                          handleDropdownItemClick(
-                            "Services",
-                            "balance-and-gait-rehabilitation"
-                          )
-                        }
-                        className={
-                          activeItem === "balance-and-gait-rehabilitation"
-                            ? "active-item"
-                            : ""
-                        }
-                      >
-                        Balance and Gait Rehabilitation
-                      </DropdownItem>
-                      <DropdownItem
-                        tag={Link}
-                        to="/services/workers-compensation"
-                        onClick={() =>
-                          handleDropdownItemClick(
-                            "Services",
-                            "workers-compensation"
-                          )
-                        }
-                        className={
-                          activeItem === "workers-compensation"
-                            ? "active-item"
-                            : ""
-                        }
-                      >
-                        Workers Compensation
-                      </DropdownItem>
-                      <DropdownItem
-                        tag={Link}
-                        to="/services/manual-therapy"
-                        onClick={() =>
-                          handleDropdownItemClick(
-                            "Services",
-                            "manual-therapy"
-                          )
-                        }
-                        className={
-                          activeItem === "manual-therapy"
-                            ? "active-item"
-                            : ""
-                        }
-                      >
-                        Manual Therapy
-                      </DropdownItem>
-                      <DropdownItem
-                        tag={Link}
-                        to="/services/sports-rehabilitation"
-                        onClick={() =>
-                          handleDropdownItemClick(
-                            "Services",
-                            "sports-rehabilitation"
-                          )
-                        }
-                        className={
-                          activeItem === "sports-rehabilitation"
-                            ? "active-item"
-                            : ""
-                        }
-                      >
-                        Sports Rehabilitation
-                      </DropdownItem>
-                      <DropdownItem
-                        tag={Link}
-                        to="/services/tmj-rehabilitation"
-                        onClick={() =>
-                          handleDropdownItemClick(
-                            "Services",
-                            "tmj-rehabilitation"
-                          )
-                        }
-                        className={
-                          activeItem === "tmj-rehabilitation"
-                            ? "active-item"
-                            : ""
-                        }
-                      >
-                        TMJ Rehabilitation
-                      </DropdownItem>
-                      <DropdownItem
-                        tag={Link}
-                        to="/services/vestibular-rehabilitation"
-                        onClick={() =>
-                          handleDropdownItemClick(
-                            "Services",
-                            "vestibular-rehabilitation"
-                          )
-                        }
-                        className={
-                          activeItem === "vestibular-rehabilitation"
-                            ? "active-item"
-                            : ""
-                        }
-                      >
-                        Vestibular Rehabilitation
-                      </DropdownItem>
-                      <DropdownItem
-                        tag={Link}
-                        to="/services/virtual-physical-therapy"
-                        onClick={() =>
-                          handleDropdownItemClick(
-                            "Services",
-                            "virtual-physical-therapy"
-                          )
-                        }
-                        className={
-                          activeItem === "virtual-physical-therapy"
-                            ? "active-item"
-                            : ""
-                        }
-                      >
-                        Virtual Physical Therapy
-                      </DropdownItem>
-                      <DropdownItem
-                        tag={Link}
-                        to="/services/complimentary-screening"
-                        onClick={() =>
-                          handleDropdownItemClick(
-                            "Services",
-                            "complimentary-screening"
-                          )
-                        }
-                        className={
-                          activeItem === "complimentary-screening"
-                            ? "active-item"
-                            : ""
-                        }
-                      >
-                        Complimentary Screening
-                      </DropdownItem>
-                    </>
-                  )}
-                  {section === "Insurance" && (
-                    <>
-                      <DropdownItem
-                        tag={Link}
-                        to="/insurance/insurance-verification"
-                        onClick={() =>
-                          handleDropdownItemClick(
-                            "Insurance",
-                            "insurance-verification"
-                          )
-                        }
-                        className={
-                          activeItem === "insurance-verification"
-                            ? "active-item"
-                            : ""
-                        }>
-                        Insurance Verification
-                      </DropdownItem>
-                      <DropdownItem
-                        tag={Link}
-                        to="/insurance/in-network-insurance"
-                        onClick={() =>
-                          handleDropdownItemClick(
-                            "Insurance",
-                            "in-network-insurance"
-                          )
-                        }
-                        className={
-                          activeItem === "in-network-insurance"
-                            ? "active-item"
-                            : ""
-                        }>
-                        In-Network Insurance
-                      </DropdownItem>
-                    </>
-                  )}
-                  {section === "Patients" && (
-                    <>
-                      <DropdownItem
-                        tag={Link}
-                        to="/patients/patient-information"
-                        onClick={() =>
-                          handleDropdownItemClick(
-                            "Patients",
-                            "patient-information"
-                          )
-                        }
-                        className={
-                          activeItem === "patient-information"
-                            ? "active-item"
-                            : ""
-                        }
-                      >
-                        Patient Information
-                      </DropdownItem>
-                      <DropdownItem
-                        tag={Link}
-                        to="/patients/direct-access"
-                        onClick={() =>
-                          handleDropdownItemClick(
-                            "Patients",
-                            "direct-access"
-                          )
-                        }
-                        className={
-                          activeItem === "direct-access"
-                            ? "active-item"
-                            : ""
-                        }
-                      >
-                        Direct Access
-                      </DropdownItem>
-                    </>
-                  )}
-                  {section === "About" && (
-                    <>
-                      <DropdownItem
-                        tag={Link}
-                        to="/about/meet-our-team"
-                        onClick={() =>
-                          handleDropdownItemClick(
-                            "About",
-                            "meet-our-team"
-                          )
-                        }
-                        className={
-                          activeItem === "meet-our-team"
-                            ? "active-item"
-                            : ""
-                        }>
-                        Meet Our Team
-                      </DropdownItem>
-                    </>
-                  )}
-                </DropdownMenu>
+                <DropdownMenu>{renderDropdownItems(section, dropdownMenus[section])}</DropdownMenu>
               </Dropdown>
             ))}
             <NavItem>
-              <NavLink
-                tag={Link}
-                to="/contact"
-                className={activeSection === "Contact" ? "active-section" : ""}
-                onClick={() => setCollapsed(true)}
-              >
+              <NavLink tag={Link} to="/contact" className={activeSection === "Contact" ? "active-section" : ""} onClick={() => setCollapsed(true)}>
                 Contact
               </NavLink>
             </NavItem>
             <NavItem>
-              <Button
-                tag={Link}
-                className="appointmentbutton"
-                to="/book-appointment"
-                onClick={() => setCollapsed(true)}
-              >
+              <Button tag={Link} className="appointmentbutton" to="/book-appointment" onClick={() => setCollapsed(true)}>
                 Book appointment
               </Button>
             </NavItem>

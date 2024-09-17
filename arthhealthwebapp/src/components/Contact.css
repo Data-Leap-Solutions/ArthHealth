@@ -43,6 +43,11 @@
     display: block;
 }
 
+.required-asterisk {
+    color: red;
+    margin-left: 2px;
+}
+
 .name-fields {
     display: flex;
     gap: 20px;
@@ -78,6 +83,30 @@
 
 .contact-button:hover {
     background-color: #555;
+}
+
+.error {
+    color: red;
+    font-size: 0.875rem;
+    margin-top: 5px;
+    display: block;
+}
+
+.alert-banner {
+    margin: 10px 0;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 1;
+}
+
+.alert-banner.hidden {
+    opacity: 0;
+    visibility: hidden;
 }
 
 @media (max-width: 768px) {
