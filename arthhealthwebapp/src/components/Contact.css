@@ -116,3 +116,45 @@
     margin-top: 20px;
     display: block;
 }
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .contact-content {
+        flex-direction: column; /* Stack elements vertically */
+        padding: 20px; /* Reduce padding for smaller screens */
+    }
+
+    .contact-info h2 {
+        font-size: 2rem; /* Smaller font size for headings */
+        text-align: center; /* Center align for better readability */
+    }
+
+    .contact-info p {
+        text-align: center; /* Center align the descriptive text */
+        font-size: 1rem; /* Adjust text size for mobile */
+    }
+
+    .contact-details p {
+        text-align: center; /* Center align contact details */
+        font-size: 1rem;
+    }
+
+    .contact-form {
+        width: 100%; /* Full width form on mobile */
+        margin-top: 20px; /* Add space above the form */
+    }
+
+    .name-fields {
+        flex-direction: column; /* Stack first and last name vertically */
+        gap: 10px; /* Reduce gap between the fields */
+    }
+
+    .contact-form .form-group {
+        margin-bottom: 15px; /* Reduce space between form fields */
+    }
+
+    .contact-button {
+        width: 100%; /* Full width button on mobile */
+        font-size: 1rem; /* Adjust button font size */
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+}
